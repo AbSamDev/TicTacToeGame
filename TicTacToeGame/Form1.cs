@@ -21,24 +21,20 @@ namespace TicTacToeGame
             b.Text = (moveCount % 2 != 0) ? "X" : "O";
             b.Enabled = false; // Disable button after selection
 
-            // Check if someone won
+            // Check victory
             if (CheckWinner())
             {
                 string winner = (moveCount % 2 != 0) ? "X" : "O";
-                if (MessageBox.Show($"{winner} Wins! Do you want to restart?", "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    RestartGame();
-                }
+                MessageBox.Show($"{winner} Wins!", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RestartGame();
                 return;
             }
 
-            // Check for a draw
+            // Checking for a draw
             if (moveCount == 9)
             {
-                if (MessageBox.Show("It's a Draw! Do you want to restart?", "Game Over", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    RestartGame();
-                }
+                MessageBox.Show("It's a Draw!", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RestartGame();
             }
         }
 
@@ -56,7 +52,7 @@ namespace TicTacToeGame
 
         private void RestartGame()
         {
-            // Reset all buttons manually (ensuring reset works)
+            // Resetting all buttons
             b1.Text = b2.Text = b3.Text = b4.Text = b5.Text = b6.Text = b7.Text = b8.Text = b9.Text = "";
             b1.Enabled = b2.Enabled = b3.Enabled = b4.Enabled = b5.Enabled = b6.Enabled = b7.Enabled = b8.Enabled = b9.Enabled = true;
 
